@@ -1,0 +1,14 @@
+const express = require('express');
+const productController = require('./../controllers/productController');
+const productRouter = express.router();
+
+userRouter.route('/')
+.get(productController.getAllProducts)
+.post(productController.createProduct);
+
+productRouter.route('/:id')
+.get(productController.getProduct)
+.patch(productController.updateProduct)
+.delete(productController.deleteProduct);
+
+app.use('/api/v1/products', productRouter);
