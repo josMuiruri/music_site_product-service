@@ -1,0 +1,22 @@
+{
+  "name": "music_site_product-service",
+  "version": "1.0.0",
+  "description": "a product service",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josMuiruri/music_site_product-service.git"
+  },
+  "author": "joseph muiruri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/josMuiruri/music_site_product-service/issues"
+  },
+  "homepage": "https://github.com/josMuiruri/music_site_product-service#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
