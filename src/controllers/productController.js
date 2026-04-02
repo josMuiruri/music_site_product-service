@@ -1,16 +1,27 @@
 const Product = require('../models/productModel');
 
-// exports.getAllProducts = (req, res => {
-//     res.status(200).json({
-//         status: 'success',
-//         // response: products.length,
-//         // data: {
-//         //     products
-//         // }
-//     });
-// });
+exports.getAllProducts = async (req, res) => {
+    try {
 
-// exports.getProduct = (req, res => {
+        const products = await Product.find();
+
+        res.status(200).json({
+            status: 'success',
+            results: products.length,
+            data: {
+                products
+            }
+        }); 
+    } catch (err) {
+        res.status(404).json({
+            status: 'fail',
+            message: err
+        });
+    }
+    
+};
+
+// exports.getProduct = (req, res) => {
     
 //     // const id = req.params.id * 1
 //     // const product = products.find(el  => el.id === id);
@@ -21,7 +32,7 @@ const Product = require('../models/productModel');
 //     //         product
 //     //     }
 //     // });
-// });
+// };
 
 exports.createProduct = async (req, res) => {
     try{
