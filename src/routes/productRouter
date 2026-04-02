@@ -1,17 +1,19 @@
 const express = require('express');
+const app = require('./../app')
 const productController = require('./../controllers/productController');
 
-const router = express.router();
+const router = express.Router();
 
-router.param('id', productController.checkID)
+// router.param('id', productController.checkID)
 
 router.route('/')
-.get(productController.getAllProducts)
+// .get(productController.getAllProducts)
 .post(productController.createProduct);
 
-router.route('/:id')
-.get(productController.getProduct)
-.patch(productController.updateProduct)
-.delete(productController.deleteProduct);
+// router.route('/:id')
+// .get(productController.getProduct)
+// .patch(productController.updateProduct)
+// .delete(productController.deleteProduct);
 
-app.use('/api/v1/products', productRouter);
+
+module.exports = router;

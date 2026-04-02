@@ -15,4 +15,4 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use('/api/v1/products', productRouter);
 
-module.export = app;
+module.exports = app;
