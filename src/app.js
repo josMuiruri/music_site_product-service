@@ -6,6 +6,9 @@ const productRouter = require('./routes/productRouter');
 
 const app = express();
 
+// Express passing
+app.set('query parser', 'extended');
+
 app.use(express.json());
 
 // middleware

@@ -2,8 +2,21 @@ const Product = require('../models/productModel');
 
 exports.getAllProducts = async (req, res) => {
     try {
+        // Build query
+        const queryObj = {...req.query};
+        const excludedFields = ['page', 'sort', 'limit', 'fields'];
+        excludedFields.forEach(el => delete queryObj[el]);
 
-        const products = await Product.find();
+        let queryStr = JSON.stringify(queryObj);
+        queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, match => `$${match}`);
+
+        console.log(JSON.parse(queryStr));
+
+        const query = Product.find(JSON.parse(queryStr));
+        //.where('ratingAverage').gte(4.0).where('price').equals(21);
+        console.log(req.query);
+        // Execute query
+        const products = await query;
 
         res.status(200).json({
             status: 'success',
@@ -32,7 +45,10 @@ exports.getProduct = async (req, res) => {
         }
     });
 } catch (err) {
-
+    res.status(404).json({
+        status: 'fail',
+        message: err
+    });
 }
 };
 
