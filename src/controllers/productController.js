@@ -12,9 +12,17 @@ exports.getAllProducts = async (req, res) => {
 
         console.log(JSON.parse(queryStr));
 
-        const query = Product.find(JSON.parse(queryStr));
+        let query = Product.find(JSON.parse(queryStr));
         //.where('ratingAverage').gte(4.0).where('price').equals(21);
         console.log(req.query);
+
+        // sorting
+        if (req.query.sort){
+            const sortBy = req.query.sort.split(',').join(' ');
+            query = query.sort(sortBy);
+        } else {
+            query = query.sort('-createdAt')
+        }
         // Execute query
         const products = await query;
 
