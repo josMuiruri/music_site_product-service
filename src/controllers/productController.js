@@ -23,6 +23,14 @@ exports.getAllProducts = async (req, res) => {
         } else {
             query = query.sort('-createdAt')
         }
+
+        // Field limiting
+        if (req.query.limit) {
+            const fields = req.query.fields.split(',').join(' ');
+            query = query.select(fields);
+        } else {
+            query = query.select('-__v');
+        }
         // Execute query
         const products = await query;
 
