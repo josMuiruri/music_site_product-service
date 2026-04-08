@@ -25,7 +25,7 @@ exports.getAllProducts = async (req, res) => {
         }
 
         // Field limiting
-        if (req.query.limit) {
+        if (req.query.fields) {
             const fields = req.query.fields.split(',').join(' ');
             query = query.select(fields);
         } else {
